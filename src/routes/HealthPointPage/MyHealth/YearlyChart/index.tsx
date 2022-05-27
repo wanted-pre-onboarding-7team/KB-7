@@ -1,11 +1,11 @@
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryGroup, VictoryLine, VictoryScatter } from 'victory'
+import { CallbackArgs } from 'victory-core'
 import dayjs from 'dayjs'
 
 import healthInfo from 'assets/data/healthInfo.json'
+import { compareScore } from './utils'
 
 import styles from './yearlyChart.module.scss'
-import { compareScore } from './utils'
-import { CallbackArgs } from 'victory-core'
 
 const yearlyChart = () => {
   const recentScoreData = healthInfo.healthScoreList
@@ -25,7 +25,11 @@ const yearlyChart = () => {
   return (
     <div className={styles.yearlyChart}>
       <div className={styles.top}>
-        <span className={styles.title}>나의 건강점수 분석 결과</span>
+        <p className={styles.title}>
+          나의 건강점수
+          <br />
+          분석 결과
+        </p>
         <button type='button'>검진결과 자세히</button>
       </div>
       <div className={styles.analyseMsgWrapper}>{compareMsg}</div>
@@ -35,12 +39,14 @@ const yearlyChart = () => {
           style={{
             axis: { stroke: 'transparent' },
             ticks: { size: 0 },
-            tickLabels: { fill: '#333333', fontSize: 25, fontWeight: 900 },
+            tickLabels: { fill: '#333333', fontSize: '20px', fontWeight: 600, fontFamily: 'Spoqa Han Sans Neo' },
           }}
         />
         <VictoryGroup data={recentScoreData} height={300}>
           <VictoryBar
-            style={{ data: { fill: ({ datum }) => (datum.location < 3 ? '#ededed' : '#ffbf00') } }}
+            style={{
+              data: { fill: ({ datum }) => (datum.location < recentScoreData.length - 1 ? '#ededed' : '#ffbf00') },
+            }}
             barWidth={50}
           />
           <VictoryLine
@@ -53,14 +59,16 @@ const yearlyChart = () => {
             labels={({ datum }) => `${datum.y}점`}
             style={{
               data: {
-                fill: ({ datum }) => (datum.location < 3 ? '#fefefe' : '#ff801f'),
-                stroke: ({ datum }) => (datum.location < 3 ? '#676767' : '#ff801f'),
+                fill: ({ datum }) => (datum.location < recentScoreData.length - 1 ? '#fefefe' : '#ff801f'),
+                stroke: ({ datum }) => (datum.location < recentScoreData.length - 1 ? '#676767' : '#ff801f'),
                 strokeWidth: 3,
               },
               labels: {
-                fontSize: 25,
-                fontWeight: 900,
-                fill: ({ datum }: CallbackArgs) => (datum.location < 3 ? '#333333' : '#ff801f'),
+                fontFamily: 'Spoqa Han Sans Neo',
+                fontSize: '20px',
+                fontWeight: 600,
+                fill: ({ datum }: CallbackArgs) =>
+                  datum.location < recentScoreData.length - 1 ? '#333333' : '#ff801f',
               },
             }}
             size={5}

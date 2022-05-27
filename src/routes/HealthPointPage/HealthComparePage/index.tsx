@@ -13,7 +13,6 @@ const HealthComparePage = () => {
       .replace(/\[|\]/g, '')
       .split(', ')
       .map((el) => Number(el))
-      .sort((a, b) => a - b)
 
     return newArr[newArr.length - 1]
   }
@@ -26,8 +25,8 @@ const HealthComparePage = () => {
   const sex = Number(data.wxcResultMap.paramMap.sex) ? '남성' : '여성'
   const wHscore = Number(data.wxcResultMap.wHscore)
   const hscorePeer = Number(data.wxcResultMap.hscore_peer)
-  const diffHs = wHscore - hscorePeer
-  const resultHscore = Math.abs(wHscore - hscorePeer)
+  const diffscorePeer = wHscore - hscorePeer
+  const resultHscore = Math.abs(diffscorePeer)
 
   const numMedi = Number(data.wxcResultMap.medi)
   const maxMediDy = lastArray(data.wxcResultMap.mediDy)
@@ -39,47 +38,47 @@ const HealthComparePage = () => {
   const diffWh = numWh - maxWh
   const diffWhResult = Math.abs(diffWh)
 
-  const mediStyleList = mediChangeStyle(diffMedi)
+  const hsStyleList = hsChangeStyle(diffscorePeer)
   const whStyleList = whChangeStyle(diffWh)
-  const hsStyleList = hsChangeStyle(diffHs)
+  const mediStyleList = mediChangeStyle(diffMedi)
 
   return (
-    <div>
-      <div>
+    <section className={styles.healthCompare}>
+      <div className={styles.compareSection}>
         <p className={styles.healthDescript}>
           {age}대 {sex} 평균보다
           <br />
-          <strong>{resultHscore}점 </strong>
+          <span className={styles.accent} style={{ color: hsStyleList.color }}>
+            {resultHscore}점 {hsStyleList.title}
+          </span>
           <span className={styles.scorePercent}>{scorePercnet}</span>
         </p>
-        <CompareChart myData={wHscore} compareData={hscorePeer} age={age} sex={sex} />
+        <CompareChart myData={wHscore} compareData={hscorePeer} age={age} sex={sex} unit={hsStyleList.unit} />
       </div>
-      <div>
+      <div className={styles.compareSection}>
         <h1 className={styles.mainTitle}>나의 10년 후 건강 예측</h1>
         <p className={styles.healthDescript}>
           10년 후 예상 건강 점수는
           <br />
           현재보다 &nbsp;
-          <strong style={{ color: whStyleList.color }}>
-            {diffWhResult}
-            {whStyleList.title}
-          </strong>
+          <span className={styles.accent} style={{ color: whStyleList.color }}>
+            {diffWhResult}점{whStyleList.title}
+          </span>
         </p>
-        <CompareChart myData={numWh} compareData={maxWh} />
+        <CompareChart myData={numWh} compareData={maxWh} unit={whStyleList.unit} />
       </div>
-      <div>
+      <div className={styles.compareSection}>
         <p className={styles.healthDescript}>
           10년 후 예상 의료비는
           <br />
           현재보다 &nbsp;
-          <strong style={{ color: mediStyleList.color }}>
-            {diffMediResult}
-            {mediStyleList.title}
-          </strong>
+          <span className={styles.accent} style={{ color: mediStyleList.color }}>
+            {diffMediResult.toLocaleString()}원{mediStyleList.title}
+          </span>
         </p>
-        <CompareChart myData={numMedi} compareData={maxMediDy} />
+        <CompareChart myData={numMedi} compareData={maxMediDy} unit={mediStyleList.unit} />
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -6,14 +6,14 @@ const UserInfo = () => {
   const { age, resHeight, sex } = healthInfo.wxcResultMap.paramMap
 
   return (
-    <dl className={styles.userInfo}>
-      <dt>기본 정보</dt>
+    <div className={styles.userInfo}>
+      <span className={styles.infoTitle}>기본 정보</span>
       <div className={styles.infoValueWrapper}>
-        <dd>{sex === '1' ? '남성' : '여성'}</dd>
-        <dd className={styles.infoValue}>{`${age}세`}</dd>
-        <dd className={styles.infoValue}>{`${resHeight}cm`}</dd>
+        <span>{sex === '1' ? '남성' : '여성'}</span>
+        <span className={styles.infoValue}>{`${age}세`}</span>
+        <span className={styles.infoValue}>{`${resHeight}cm`}</span>
       </div>
-    </dl>
+    </div>
   )
 }
 

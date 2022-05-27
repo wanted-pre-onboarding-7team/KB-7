@@ -1,16 +1,12 @@
-import dayjs from 'dayjs'
-import { divide } from 'lodash'
-
 interface IData {
   x: string
   y: number
 }
 
 export const compareScore = (data: IData[]) => {
-  const dataLength = data.length
   const thisYear = 2021
-  const latestData = data[dataLength - 1]
-  const prevData = data[dataLength - 2]
+  const latestData = data[data.length - 1]
+  const prevData = data[data.length - 2]
 
   if (!prevData) return `${latestData.x}년 건강 점수는\n${latestData.y}점입니다.`
 
@@ -22,7 +18,7 @@ export const compareScore = (data: IData[]) => {
         <p>
           건강 점수는
           <br />
-          총점이 지난해보다 &nbsp;<mark>{`${diff}점 높아졌어요`}</mark>
+          총점이 지난해보다 &nbsp;<strong>{`${diff}점 높아졌어요`}</strong>
         </p>
       )
 
@@ -31,7 +27,7 @@ export const compareScore = (data: IData[]) => {
         <p>
           건강 점수는
           <br />
-          총점이 지난해보다 &nbsp;<mark>{`${diff * -1}점 낮아졌어요`}</mark>
+          총점이 지난해보다 &nbsp;<strong>{`${diff * -1}점 낮아졌어요`}</strong>
         </p>
       )
 
@@ -50,7 +46,7 @@ export const compareScore = (data: IData[]) => {
         건강 점수는
         <br />
         {`총점이 ${prevData.x}년보다`}
-        &nbsp;<mark>{`${diff}점 높아졌어요`}</mark>
+        &nbsp;<strong>{`${diff}점 높아졌어요`}</strong>
       </p>
     )
 
@@ -60,7 +56,7 @@ export const compareScore = (data: IData[]) => {
         건강 점수는
         <br />
         {`총점이 ${prevData.x}년보다`}
-        &nbsp;<mark>{`${diff * -1}점 낮아졌어요`}</mark>
+        &nbsp;<strong>{`${diff * -1}점 낮아졌어요`}</strong>
       </p>
     )
 

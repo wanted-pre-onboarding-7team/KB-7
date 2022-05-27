@@ -1,10 +1,7 @@
 @use '/src/styles/constants/colors';
 
 .app {
-  position: realative;
-  max-width: 375px;
-  min-height: 100vh;
-  padding: 0 20px;
-  margin: 0 auto;
-  background: colors.$BACKGROUND;
+  height: 100vh;
+  overflow-y: auto;
+  background: url('https://www.kbhc.co.kr/asset/images/main_01_pc.png');
 }

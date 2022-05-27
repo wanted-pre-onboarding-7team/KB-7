@@ -8,9 +8,10 @@
   height: 50px;
   margin-bottom: 48px;
   background: colors.$BACKGROUND_YELLOW;
+  border: 1px solid colors.$BORDER_YELLOW;
   border-radius: 10px;
 
-  dt {
+  .infoTitle {
     font-size: 16px;
     font-weight: 500;
     color: colors.$TEXT_SECONDARY;
@@ -19,7 +20,7 @@
   .infoValueWrapper {
     display: flex;
 
-    dd {
+    span {
       font-size: 16px;
       font-weight: 500;
       color: colors.$TEXT_PRIMARY;

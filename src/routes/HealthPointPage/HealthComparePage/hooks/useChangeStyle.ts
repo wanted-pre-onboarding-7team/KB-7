@@ -1,5 +1,5 @@
 export const mediChangeStyle = (diffMedi: number) => {
-  const mediStyleList = { title: '', color: '' }
+  const mediStyleList = { title: '', color: '', unit: '원' }
 
   if (diffMedi > 0) {
     mediStyleList.title = ' 적어요.'
@@ -20,7 +20,7 @@ export const mediChangeStyle = (diffMedi: number) => {
 }
 
 export const whChangeStyle = (diffWh: number) => {
-  const whStyleList = { title: '', color: '' }
+  const whStyleList = { title: '', color: '', unit: '점' }
 
   if (diffWh > 0) {
     whStyleList.title = ' 높아요.'
@@ -41,7 +41,7 @@ export const whChangeStyle = (diffWh: number) => {
 }
 
 export const hsChangeStyle = (diffHs: number) => {
-  const hsStyleList = { title: '', color: '' }
+  const hsStyleList = { title: '', color: '', unit: '점' }
 
   if (diffHs > 0) {
     hsStyleList.title = ' 높아요.'

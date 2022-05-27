@@ -3,12 +3,13 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryScatter, VictoryLine } fr
 interface Props {
   myData: number
   compareData: number
+  unit: string
   age?: number
   sex?: string
 }
 
 const CompareChart = (Props: Props) => {
-  const { myData, compareData, age, sex } = Props
+  const { myData, compareData, age, sex, unit } = Props
   const compareObject = age && sex ? `${age}대 ${sex}` : '10년 후'
 
   const beforeData = [{ x: 1, y: myData }]
@@ -16,14 +17,22 @@ const CompareChart = (Props: Props) => {
 
   return (
     <VictoryChart domainPadding={70}>
-      <VictoryAxis tickFormat={['나', compareObject]} style={{ axis: { strokeWidth: 0 } }} />
+      <VictoryAxis
+        tickFormat={['나', compareObject]}
+        style={{
+          axis: { strokeWidth: 0 },
+          tickLabels: { fontSize: '20px', fontWeight: 600, fontFamily: 'Spoqa Han Sans Neo' },
+        }}
+      />
       <VictoryBar
         data={beforeData}
-        labels={({ datum }) => datum.y}
+        labels={({ datum }) => `${datum.y.toLocaleString()}${unit}`}
         style={{
           data: { fill: '#ffbf00' },
           labels: {
-            fontSize: 17,
+            fontFamily: 'Spoqa Han Sans Neo',
+            fontSize: '20px',
+            fontWeight: 600,
             fill: '#ff801f',
           },
         }}
@@ -31,11 +40,13 @@ const CompareChart = (Props: Props) => {
       />
       <VictoryBar
         data={afterData}
-        labels={({ datum }) => datum.y}
+        labels={({ datum }) => `${datum.y.toLocaleString()}${unit}`}
         style={{
           data: { fill: '#ff801f' },
           labels: {
-            fontSize: 17,
+            fontFamily: 'Spoqa Han Sans Neo',
+            fontWeight: 600,
+            fontSize: '20px',
           },
         }}
         barWidth={45}
@@ -50,9 +61,9 @@ const CompareChart = (Props: Props) => {
       <VictoryScatter
         style={{
           data: {
-            fill: ({ datum }) => (datum.x === 1 ? '#989A99' : '#ffffff'),
+            fill: ({ datum }) => (datum.x === 1 ? '#ff801f' : '#ffffff'),
             stroke: '#989A99',
-            strokeWidth: 3,
+            strokeWidth: ({ datum }) => (datum.x === 1 ? 0 : 3),
           },
         }}
         size={7}

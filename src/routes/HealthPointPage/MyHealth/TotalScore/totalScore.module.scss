@@ -6,14 +6,14 @@
 
   .title {
     position: relative;
-    font-size: 32px;
+    margin-top: 10px;
+    font-size: 20px;
     font-weight: 800;
-    text-align: left;
 
     .iIcon {
       position: absolute;
-      width: 36px;
-      height: 36px;
+      width: 20px;
+      height: 20px;
       margin-left: 4px;
 
       path {
@@ -30,7 +30,7 @@
     color: colors.$TEXT_SECONDARY;
     text-align: center;
 
-    mark {
+    strong {
       all: unset;
       font-size: 48px;
       font-weight: 900;
@@ -42,15 +42,17 @@
     position: absolute;
     top: 80%;
     left: 50%;
+    text-align: center;
     transform: translate(-50%, 0);
 
     .healthDate {
       margin-bottom: 16px;
-      font-size: 16px;
+      line-height: 1.6;
       color: colors.$TEXT_SECONDARY;
     }
 
     button {
+      width: 320px;
       font-size: 16px;
       color: colors.$TEXT_SECONDARY;
     }

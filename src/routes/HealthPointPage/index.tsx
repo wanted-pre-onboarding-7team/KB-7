@@ -7,10 +7,13 @@ import OCare from './OCare'
 
 const HealthPointPage = () => {
   return (
-    <div className={styles.page}>
-      <MyHealth />
-      <HealthComparePage />
-      <OCare />
+    <div className={styles.container}>
+      <header className={styles.header}>마이헬스</header>
+      <main className={styles.page}>
+        <MyHealth />
+        <HealthComparePage />
+        <OCare />
+      </main>
     </div>
   )
 }

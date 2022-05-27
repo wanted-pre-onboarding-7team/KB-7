@@ -4,7 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.1px;
   outline: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -19,6 +19,10 @@
   &::-webkit-scrollbar {
     display: none; // Chrome
   }
+}
+
+body {
+  overflow: hidden;
 }
 
 img {
