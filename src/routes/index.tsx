@@ -1,13 +1,10 @@
-import styles from './routes.module.scss'
-
 import HealthPointPage from './HealthPointPage'
-import YearLogic from './HealthPointPage/ComparisonChart/YearLogic'
+import styles from './routes.module.scss'
 
 const App = () => {
   return (
     <div className={styles.app}>
       <HealthPointPage />
-      <YearLogic />
     </div>
   )
 }
