@@ -31,12 +31,12 @@ const yearlyChart = () => {
   const analyzeMsg = '총점이 지난 해보다 100점 높아졌어요'
 
   return (
-    <div>
-      <div>
-        <span>나의 건강점수 분석 결과</span>
+    <div className={styles.yearlyChart}>
+      <div className={styles.top}>
+        <span className={styles.title}>나의 건강점수 분석 결과</span>
         <button type='button'>검진결과 자세히</button>
       </div>
-      <div className={styles.analyseScore}>{analyzeMsg}</div>
+      <div className={styles.analyseMsg}>{analyzeMsg}</div>
       <VictoryChart domainPadding={{ x: [30, 30] }} width={500} height={300}>
         <VictoryAxis tickFormat={(x) => x} />
         <VictoryGroup
