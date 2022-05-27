@@ -1,0 +1,24 @@
+@use '/src/styles/constants/colors';
+
+.mainTitle {
+  margin-bottom: 25px;
+  color: colors.$TEXT_PRIMARY;
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.healthPointDesc,
+.medicalExpensesDesc {
+  text-align: left;
+  font-size: 16px;
+  line-height: 20px;
+
+  strong {
+    background: linear-gradient(colors.$BACKGROUND 50%, colors.$HIGHLIGHT 50%);
+  }
+}
+
+.medicalExpensesDesc {
+  margin-top: 20px;
+}
