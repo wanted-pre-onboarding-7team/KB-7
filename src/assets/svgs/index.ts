@@ -6,3 +6,4 @@ export { ReactComponent as ResTotalCholesterolIcon } from './ic-icon-mission-h-5
 export { ReactComponent as SmkQtyIcon } from './ic-icon-mission-h-6.svg'
 export { ReactComponent as ResFastingBloodSugerIcon } from './ic-icon-mission-h-7.svg'
 export { ReactComponent as ExerciQtyIcon } from './ic-icon-mission-h-8.svg'
+export { ReactComponent as IIcon } from './iIcon.svg'
