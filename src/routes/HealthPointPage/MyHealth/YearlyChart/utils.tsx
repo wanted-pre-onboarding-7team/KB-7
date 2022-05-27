@@ -21,7 +21,7 @@ export const compareScore = (data: IData[]) => {
         <p>
           건강 점수는
           <br />
-          총점이 지난해보다 <mark>{`${diff}점 높아졌어요`}</mark>
+          총점이 지난해보다 &nbsp;<mark>{`${diff}점 높아졌어요`}</mark>
         </p>
       )
 
@@ -30,7 +30,7 @@ export const compareScore = (data: IData[]) => {
         <p>
           건강 점수는
           <br />
-          총점이 지난해보다 <mark>{`${diff * -1}점 낮아졌어요`}</mark>
+          총점이 지난해보다 &nbsp;<mark>{`${diff * -1}점 낮아졌어요`}</mark>
         </p>
       )
 
@@ -49,7 +49,7 @@ export const compareScore = (data: IData[]) => {
         건강 점수는
         <br />
         {`총점이 ${prevData.x}년보다`}
-        <mark>{`${diff}점 높아졌어요`}</mark>
+        &nbsp;<mark>{`${diff}점 높아졌어요`}</mark>
       </p>
     )
 
@@ -59,7 +59,7 @@ export const compareScore = (data: IData[]) => {
         건강 점수는
         <br />
         {`총점이 ${prevData.x}년보다`}
-        <mark>{`${diff * -1}점 낮아졌어요`}</mark>
+        &nbsp;<mark>{`${diff * -1}점 낮아졌어요`}</mark>
       </p>
     )
 
