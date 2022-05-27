@@ -1,0 +1,29 @@
+@use 'src/styles/constants/colors';
+
+.totalScore {
+  position: relative;
+  width: 100%;
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  .sub {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    .healthDate {
+      margin-bottom: 16px;
+      font-size: 16px;
+      color: colors.$TEXT_SECONDARY;
+    }
+
+    button {
+      font-size: 16px;
+      color: colors.$TEXT_SECONDARY;
+    }
+  }
+}
