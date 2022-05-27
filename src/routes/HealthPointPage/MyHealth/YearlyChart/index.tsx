@@ -13,6 +13,7 @@ import dayjs from 'dayjs'
 import healthInfo from 'assets/data/healthInfo.json'
 
 import styles from './yearlyChart.module.scss'
+import { compareScore } from './utils'
 
 const yearlyChart = () => {
   const recentScoreData = healthInfo.healthScoreList
@@ -27,8 +28,15 @@ const yearlyChart = () => {
       }
     })
 
-  console.log('recentScoreData:', recentScoreData)
-  const analyzeMsg = '총점이 지난 해보다 100점 높아졌어요'
+  // test data
+  /* const recentScoreData = [
+    { x: '2017', y: 870 },
+    { x: '2018', y: 880 },
+    { x: '2019', y: 900 },
+    { x: '2021', y: 900 },
+  ] */
+
+  const compareMsg = compareScore(recentScoreData)
 
   return (
     <div className={styles.yearlyChart}>
@@ -36,7 +44,7 @@ const yearlyChart = () => {
         <span className={styles.title}>나의 건강점수 분석 결과</span>
         <button type='button'>검진결과 자세히</button>
       </div>
-      <div className={styles.analyseMsg}>{analyzeMsg}</div>
+      <div className={styles.analyseMsgWrapper}>{compareMsg}</div>
       <VictoryChart domainPadding={{ x: [30, 30] }} width={500} height={300}>
         <VictoryAxis tickFormat={(x) => x} />
         <VictoryGroup
