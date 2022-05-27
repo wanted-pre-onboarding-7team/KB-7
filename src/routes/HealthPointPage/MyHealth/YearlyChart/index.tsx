@@ -63,8 +63,8 @@ const yearlyChart = () => {
             }
             style={{
               data: {
-                fill: ({ datum }) => (datum.location < 3 ? '#ffffff' : '#ff801f'),
-                stroke: ({ datum }) => (datum.location < 3 ? '#000000' : '#ff801f'),
+                fill: ({ datum }) => (datum.location < 3 ? '#fefefe' : '#ff801f'),
+                stroke: ({ datum }) => (datum.location < 3 ? '#676767' : '#ff801f'),
                 strokeWidth: 3,
               },
             }}
