@@ -7,7 +7,7 @@ interface IData {
 
 export const compareScore = (data: IData[]) => {
   const dataLength = data.length
-  const thisYear = Number(dayjs().format('YYYY'))
+  const thisYear = 2021
   const latestData = data[dataLength - 1]
   const prevData = data[dataLength - 2]
 
