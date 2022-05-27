@@ -27,7 +27,7 @@ const yearlyChart = () => {
       }
     })
 
-  console.log('recentScoreData:', recentScoreData)
+  console.log(recentScoreData.map((d) => d.y))
   const analyzeMsg = '총점이 지난 해보다 100점 높아졌어요'
 
   return (
@@ -37,29 +37,31 @@ const yearlyChart = () => {
         <button type='button'>검진결과 자세히</button>
       </div>
       <div className={styles.analyseScore}>{analyzeMsg}</div>
-      <VictoryChart domainPadding={{ x: [30, 30] }} width={500} height={300}>
+      <VictoryChart domainPadding={{ x: [30, 30], y: [0, 10] }} width={500} height={300}>
         <VictoryAxis
           tickFormat={(x) => x}
           style={{
             axis: { stroke: 'transparent' },
-            tickLabels: { fill: '#333333' },
+            ticks: { size: 0 },
+            tickLabels: { fill: '#333333', fontSize: 25 },
           }}
         />
-        <VictoryGroup data={recentScoreData}>
+        <VictoryGroup data={recentScoreData} height={300}>
           <VictoryBar
             style={{ data: { fill: ({ datum }) => (datum.location < 3 ? '#ededed' : '#ffbf00') } }}
             barWidth={50}
+            x='x'
+            y='y'
           />
           <VictoryLine
             style={{
-              data: { stroke: '#676767' },
-              parent: { border: '1px solid #ccc' },
+              data: { stroke: '#676767', strokeWidth: 3 },
             }}
           />
           <VictoryScatter
             labels={({ datum }) => `${datum.y}점`}
             labelComponent={
-              <VictoryLabel textAnchor='middle' verticalAnchor='middle' y={25} style={{ fontSize: 25 }} />
+              <VictoryLabel textAnchor='middle' verticalAnchor='middle' y={40} style={{ fontSize: 25 }} />
             }
             style={{
               data: {
