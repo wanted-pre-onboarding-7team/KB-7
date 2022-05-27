@@ -38,34 +38,37 @@ const yearlyChart = () => {
       </div>
       <div className={styles.analyseScore}>{analyzeMsg}</div>
       <VictoryChart domainPadding={{ x: [30, 30] }} width={500} height={300}>
-        <VictoryAxis tickFormat={(x) => x} />
-        <VictoryGroup
-          data={recentScoreData}
-          labels={({ datum }) => `${datum.y}점`}
-          labelComponent={<VictoryLabel textAnchor='middle' verticalAnchor='middle' y={25} style={{ fontSize: 25 }} />}
-        >
+        <VictoryAxis
+          tickFormat={(x) => x}
+          style={{
+            axis: { stroke: 'transparent' },
+            tickLabels: { fill: '#333333' },
+          }}
+        />
+        <VictoryGroup data={recentScoreData}>
           <VictoryBar
-            x='x'
-            y='y'
-            style={{ data: { fill: ({ datum }) => (datum.location < 3 ? '#ededed' : '#ff801f') } }}
-            barWidth={30}
-          />
-          <VictoryScatter
-            style={{
-              data: {
-                fill: ({ datum }) => (datum.location < 3 ? '#fefefe' : '#ff801f'),
-                stroke: ({ datum }) => (datum.location < 3 ? '#000000' : '#ff801f'),
-                fillOpacity: 0.7,
-                strokeWidth: 3,
-              },
-            }}
-            size={5}
+            style={{ data: { fill: ({ datum }) => (datum.location < 3 ? '#ededed' : '#ffbf00') } }}
+            barWidth={50}
           />
           <VictoryLine
             style={{
               data: { stroke: '#676767' },
               parent: { border: '1px solid #ccc' },
             }}
+          />
+          <VictoryScatter
+            labels={({ datum }) => `${datum.y}점`}
+            labelComponent={
+              <VictoryLabel textAnchor='middle' verticalAnchor='middle' y={25} style={{ fontSize: 25 }} />
+            }
+            style={{
+              data: {
+                fill: ({ datum }) => (datum.location < 3 ? '#ffffff' : '#ff801f'),
+                stroke: ({ datum }) => (datum.location < 3 ? '#000000' : '#ff801f'),
+                strokeWidth: 3,
+              },
+            }}
+            size={5}
           />
         </VictoryGroup>
       </VictoryChart>
