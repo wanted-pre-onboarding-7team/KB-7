@@ -27,7 +27,6 @@ const yearlyChart = () => {
       }
     })
 
-  console.log(recentScoreData.map((d) => d.y))
   const analyzeMsg = '총점이 지난 해보다 100점 높아졌어요'
 
   return (
@@ -43,15 +42,13 @@ const yearlyChart = () => {
           style={{
             axis: { stroke: 'transparent' },
             ticks: { size: 0 },
-            tickLabels: { fill: '#333333', fontSize: 25 },
+            tickLabels: { fill: '#333333', fontSize: 25, fontWeight: 900 },
           }}
         />
         <VictoryGroup data={recentScoreData} height={300}>
           <VictoryBar
             style={{ data: { fill: ({ datum }) => (datum.location < 3 ? '#ededed' : '#ffbf00') } }}
             barWidth={50}
-            x='x'
-            y='y'
           />
           <VictoryLine
             style={{
@@ -61,7 +58,12 @@ const yearlyChart = () => {
           <VictoryScatter
             labels={({ datum }) => `${datum.y}점`}
             labelComponent={
-              <VictoryLabel textAnchor='middle' verticalAnchor='middle' y={40} style={{ fontSize: 25 }} />
+              <VictoryLabel
+                textAnchor='middle'
+                verticalAnchor='middle'
+                y={40}
+                style={{ fontSize: 25, fill: '#676767', fontWeight: 900 }}
+              />
             }
             style={{
               data: {
