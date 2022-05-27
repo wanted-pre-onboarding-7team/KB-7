@@ -1,18 +1,11 @@
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryGroup,
-  VictoryLabel,
-  VictoryLine,
-  VictoryScatter,
-  VictoryTooltip,
-} from 'victory'
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryGroup, VictoryLine, VictoryScatter } from 'victory'
 import dayjs from 'dayjs'
 
 import healthInfo from 'assets/data/healthInfo.json'
 
 import styles from './yearlyChart.module.scss'
+import { compareScore } from './utils'
+import { CallbackArgs } from 'victory-core'
 
 const yearlyChart = () => {
   const recentScoreData = healthInfo.healthScoreList
@@ -27,15 +20,15 @@ const yearlyChart = () => {
       }
     })
 
-  const analyzeMsg = '총점이 지난 해보다 100점 높아졌어요'
+  const compareMsg = compareScore(recentScoreData)
 
   return (
-    <div>
-      <div>
-        <span>나의 건강점수 분석 결과</span>
+    <div className={styles.yearlyChart}>
+      <div className={styles.top}>
+        <span className={styles.title}>나의 건강점수 분석 결과</span>
         <button type='button'>검진결과 자세히</button>
       </div>
-      <div className={styles.analyseScore}>{analyzeMsg}</div>
+      <div className={styles.analyseMsgWrapper}>{compareMsg}</div>
       <VictoryChart domainPadding={{ x: [30, 30], y: [0, 10] }} width={500} height={300}>
         <VictoryAxis
           tickFormat={(x) => x}
@@ -56,20 +49,18 @@ const yearlyChart = () => {
             }}
           />
           <VictoryScatter
+            data={recentScoreData}
             labels={({ datum }) => `${datum.y}점`}
-            labelComponent={
-              <VictoryLabel
-                textAnchor='middle'
-                verticalAnchor='middle'
-                y={40}
-                style={{ fontSize: 25, fill: '#676767', fontWeight: 900 }}
-              />
-            }
             style={{
               data: {
                 fill: ({ datum }) => (datum.location < 3 ? '#fefefe' : '#ff801f'),
                 stroke: ({ datum }) => (datum.location < 3 ? '#676767' : '#ff801f'),
                 strokeWidth: 3,
+              },
+              labels: {
+                fontSize: 25,
+                fontWeight: 900,
+                fill: ({ datum }: CallbackArgs) => (datum.location < 3 ? '#333333' : '#ff801f'),
               },
             }}
             size={5}
