@@ -1,4 +1,13 @@
-import { VictoryAxis, VictoryBar, VictoryChart } from 'victory'
+import {
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryGroup,
+  VictoryLabel,
+  VictoryLine,
+  VictoryScatter,
+  VictoryTooltip,
+} from 'victory'
 import dayjs from 'dayjs'
 
 import healthInfo from 'assets/data/healthInfo.json'
@@ -10,10 +19,15 @@ const yearlyChart = () => {
     .sort((a, b) => Number(b.SUBMIT_DATE) - Number(a.SUBMIT_DATE))
     .slice(0, 4)
     .reverse()
-    .map((data) => {
-      return { x: dayjs(data.SUBMIT_DATE).format('YYYY'), y: Number(data.SCORE) }
+    .map((data, index) => {
+      return {
+        x: dayjs(data.SUBMIT_DATE).format('YYYY'),
+        y: Number(data.SCORE),
+        location: Number(index),
+      }
     })
 
+  console.log('recentScoreData:', recentScoreData)
   const analyzeMsg = '총점이 지난 해보다 100점 높아졌어요'
 
   return (
@@ -23,10 +37,37 @@ const yearlyChart = () => {
         <button type='button'>검진결과 자세히</button>
       </div>
       <div className={styles.analyseScore}>{analyzeMsg}</div>
-      <VictoryChart domainPadding={20}>
-        <VictoryBar x='x' y='y' data={recentScoreData} style={{ data: { fill: '#ededed' } }} />
+      <VictoryChart domainPadding={{ x: [30, 30] }} width={500} height={300}>
         <VictoryAxis tickFormat={(x) => x} />
-        <VictoryAxis dependentAxis tickValues={[0.2, 0.4, 0.6, 0.8, 1]} tickFormat={(x) => 1000 * x} />
+        <VictoryGroup
+          data={recentScoreData}
+          labels={({ datum }) => `${datum.y}점`}
+          labelComponent={<VictoryLabel textAnchor='middle' verticalAnchor='middle' y={25} style={{ fontSize: 25 }} />}
+        >
+          <VictoryBar
+            x='x'
+            y='y'
+            style={{ data: { fill: ({ datum }) => (datum.location < 3 ? '#ededed' : '#ff801f') } }}
+            barWidth={30}
+          />
+          <VictoryScatter
+            style={{
+              data: {
+                fill: ({ datum }) => (datum.location < 3 ? '#fefefe' : '#ff801f'),
+                stroke: ({ datum }) => (datum.location < 3 ? '#000000' : '#ff801f'),
+                fillOpacity: 0.7,
+                strokeWidth: 3,
+              },
+            }}
+            size={5}
+          />
+          <VictoryLine
+            style={{
+              data: { stroke: '#676767' },
+              parent: { border: '1px solid #ccc' },
+            }}
+          />
+        </VictoryGroup>
       </VictoryChart>
     </div>
   )
