@@ -1,7 +1,7 @@
-import styles from './oCare.module.scss'
-
 import { MY_MAX_SCORE, HEALTH_POINT_NAME } from './constants'
 import HealthPointCard from './HealthPointCard'
+
+import styles from './oCare.module.scss'
 
 const OCare = () => {
   return (

@@ -1,9 +1,8 @@
 import MyHealth from './MyHealth'
+import HealthComparePage from './HealthComparePage'
+import OCare from './OCare'
 
 import styles from './healthPointPage.module.scss'
-import HealthComparePage from './HealthComparePage'
-
-import OCare from './OCare'
 
 const HealthPointPage = () => {
   return (

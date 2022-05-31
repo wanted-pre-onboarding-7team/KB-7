@@ -1,9 +1,9 @@
-import styles from './healthPointCard.module.scss'
-
 import { getColor, getCurrentFigure, getCurrentStatus, getUnit, getNormalRange, getTagList, getCareDesc } from './utils'
 
 import Icon from './Icon'
 import TagList from './TagList'
+
+import styles from './healthPointCard.module.scss'
 
 interface Props {
   index: number

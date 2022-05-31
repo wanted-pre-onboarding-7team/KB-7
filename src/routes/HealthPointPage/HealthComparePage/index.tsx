@@ -1,9 +1,9 @@
-import CompareChart from './CompareChart'
-
 import healthInfo from 'assets/data/healthInfo.json'
 
-import styles from './healthComparePage.module.scss'
 import { mediChangeStyle, whChangeStyle, hsChangeStyle } from './hooks/useChangeStyle'
+import CompareChart from './CompareChart'
+
+import styles from './healthComparePage.module.scss'
 
 const HealthComparePage = () => {
   const data = JSON.parse(JSON.stringify(healthInfo))

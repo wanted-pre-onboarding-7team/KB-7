@@ -1,4 +1,5 @@
 import HealthPointPage from './HealthPointPage'
+
 import styles from './routes.module.scss'
 
 const App = () => {

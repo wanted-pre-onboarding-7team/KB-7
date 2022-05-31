@@ -1,8 +1,8 @@
-import styles from './myHealth.module.scss'
-
 import TotalScore from './TotalScore'
 import UserInfo from './UserInfo'
 import YearlyChart from './YearlyChart'
+
+import styles from './myHealth.module.scss'
 
 const MyHealth = () => {
   return (
