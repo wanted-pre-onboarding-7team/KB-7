@@ -5,18 +5,20 @@ import { getColor, getCurrentFigure, getCurrentStatus, getUnit, getNormalRange, 
 import Icon from './Icon'
 import TagList from './TagList'
 
-interface IProps {
+interface Props {
   index: number
   dataKey: string
   name: string
 }
 
-const HealthPointCard = ({ index, dataKey, name }: IProps) => {
+const HealthPointCard = ({ index, dataKey, name }: Props) => {
   const titleNumber = String(index + 1).padStart(2, '0')
   const color = getColor(dataKey)
+
   const figure = getCurrentFigure(dataKey)
   const unit = getUnit(dataKey)
   const status = getCurrentStatus(dataKey)
+
   const normalRange = getNormalRange(dataKey)
   const tagList = getTagList(dataKey)
   const careDesc = getCareDesc(dataKey)

@@ -1,11 +1,11 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
 
 .container {
   position: relative;
-  max-width: 375px;
+  width: 100%;
   margin: 0 auto;
   background: colors.$PRIMARY;
-  box-shadow: 0 -1px 10px 0 colors.$SHADOW;
 
   .header {
     height: 80px;
@@ -22,5 +22,10 @@
     background: colors.$BACKGROUND;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+  }
+
+  @include responsive.after(ML) {
+    max-width: 375px;
+    box-shadow: 0 -1px 10px 0 colors.$SHADOW;
   }
 }

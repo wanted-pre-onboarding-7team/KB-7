@@ -7,7 +7,7 @@ import { compareScore } from './utils'
 
 import styles from './yearlyChart.module.scss'
 
-const yearlyChart = () => {
+const YearlyChart = () => {
   const recentScoreData = healthInfo.healthScoreList
     .sort((a, b) => Number(b.SUBMIT_DATE) - Number(a.SUBMIT_DATE))
     .slice(0, 4)
@@ -79,4 +79,4 @@ const yearlyChart = () => {
   )
 }
 
-export default yearlyChart
+export default YearlyChart

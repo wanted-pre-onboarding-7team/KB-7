@@ -74,17 +74,26 @@
 
     .descList {
       li {
-        padding-left: 20px;
+        position: relative;
+        padding-left: 12px;
         margin-top: 16px;
         font-size: 14px;
         line-height: 1.6;
         text-align: justify;
-        text-indent: -20px;
-        list-style: disc inside;
+        text-indent: -12px;
+
+        &::before {
+          position: absolute;
+          top: 7px;
+          width: 6px;
+          height: 6px;
+          content: '';
+          background-color: colors.$TEXT_SECONDARY;
+          border-radius: 50%;
+        }
 
         span {
-          position: relative;
-          left: -8px;
+          margin-left: 12px;
         }
       }
     }

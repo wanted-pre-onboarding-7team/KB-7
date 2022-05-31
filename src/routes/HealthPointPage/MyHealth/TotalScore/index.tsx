@@ -30,22 +30,24 @@ const TotalScore = () => {
         김헬스님의 건강점수
         <IIcon className={styles.iIcon} />
       </h1>
-      <VictoryPie
-        data={data}
-        cornerRadius={50}
-        startAngle={-135}
-        endAngle={135}
-        labels={() => null}
-        innerRadius={120}
-        dataComponent={<CustomSlice />}
-        animate={{ duration: 1000, easing: 'bounce' }}
-      />
-      <p className={styles.pieChartText}>
-        <strong>{healthScore}</strong>점
-      </p>
-      <div className={styles.sub}>
-        <span className={styles.healthDate}>{healthDate}</span>
-        <button type='button'>건강검진 결과 가져오기 &nbsp;&nbsp; 〉</button>
+      <div className={styles.pieChart}>
+        <VictoryPie
+          data={data}
+          cornerRadius={50}
+          startAngle={-135}
+          endAngle={135}
+          labels={() => null}
+          innerRadius={120}
+          dataComponent={<CustomSlice />}
+          animate={{ duration: 1000, easing: 'bounce' }}
+        />
+        <p className={styles.pieChartText}>
+          <strong>{healthScore}</strong>점
+        </p>
+        <div className={styles.sub}>
+          <span className={styles.healthDate}>{healthDate}</span>
+          <button type='button'>건강검진 결과 가져오기 &nbsp;&nbsp; 〉</button>
+        </div>
       </div>
     </div>
   )
